@@ -64,8 +64,11 @@ def play(bet_amount):
     print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
 
     if user_chose_even == is_even:
-        print("You Won", (int(bet_amount)*2), "mon!")
+        bet_amount = int(bet_amount)*2
+        print("You Won", bet_amount, "mon!")
+
     else:
+        # int(new_balance) -= int(bet_amount) ask the player to play again or not
         print("You Lost!")
 
 
