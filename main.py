@@ -5,6 +5,8 @@ intro = ("In this traditional Japanese dice game, "
          "two dice are rolled in a bamboo cup by the dealer sitting on the floor. "
          "The player must guess if the dice total to an even (cho) or odd (han) number")
 
+# game intro so the player know how it works
+
 print(intro)
 
 
@@ -23,56 +25,57 @@ def bet():
             if 0 < int(user_input) <= 5000:
                 print(game_start)
                 return user_input
-            else:
+            else:                       # player has to enter a bet from 1 to 5000
                 print(invalid_input)
                 play(user_betting)
         except:
             bet()
 
-    elif user_input.upper() == 'QUIT':
+    elif user_input.upper() == 'QUIT':  # this option for the player to quit the game
         print('Thanks for playing.')
         quit()
-    else:
+    else:       # in case the player enter an invalid input like their dog's name
         print(invalid_input)
         bet()
 
 
 def play(bet_amount):
 
-    first_dice = random.randint(1, 6)
+    first_dice = random.randint(1, 6)  # we generate 2 numbers from 1 to 6 because that's how dice is, only 6 numbers
     second_dice = random.randint(1, 6)
 
-    is_even = True
+    is_even = True      # we set is_even as True
 
-    if (first_dice + second_dice) % 2 == 0:
+    if (first_dice + second_dice) % 2 == 0:     # if sum of the two generated numbers is even, we keep it as True
         is_even = True
-    elif (first_dice + second_dice) % 2 == 1:
+    elif (first_dice + second_dice) % 2 == 1:   # if sum of the two generated numbers is even, we change it to False
         is_even = False
 
-    user_choice = input("   CHO (even)  or  HAN(odd)  ?\n> ")
+    # player has to decide either sum of the previous two generated numbers is gonna be odd or even
 
-    user_chose_even = True
+    player_choice = input("   CHO (even)  or  HAN(odd)  ?\n> ")
 
-    if user_choice.upper() == 'CHO':
-        user_chose_even = True
-
-        print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
-        if user_chose_even == is_even:
-            return_amount = int(bet_amount) * 2
-            print("You Won", return_amount, "mon!")
-        else:
-            print("You Lost!")
-    elif user_choice.upper() == 'HAN':
-        user_chose_even = False
+    if player_choice.upper() == 'CHO':
+        player_chose_even = True      # if player says even we set player_chose_even as True
         print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
 
-        if user_chose_even == is_even:
+        if player_chose_even == is_even:    # we compare sum of the two previous generated nums with player choice
             return_amount = int(bet_amount) * 2
             print("You Won", return_amount, "mon!")
         else:
             print("You Lost!")
 
-    else:
+    elif player_choice.upper() == 'HAN':
+        player_chose_even = False       # again if player says even we set player_chose_even as False
+        print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
+
+        if player_chose_even == is_even:
+            return_amount = int(bet_amount) * 2
+            print("You Won", return_amount, "mon!")
+        else:
+            print("You Lost!")
+
+    else:                                   # in case the player again enter their neighborhood's name
         print('Please enter a valid bet!')
         play(bet_amount)
 
