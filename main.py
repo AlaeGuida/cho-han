@@ -55,21 +55,26 @@ def play(bet_amount):
 
     if user_choice.upper() == 'CHO':
         user_chose_even = True
+
+        print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
+        if user_chose_even == is_even:
+            return_amount = int(bet_amount) * 2
+            print("You Won", return_amount, "mon!")
+        else:
+            print("You Lost!")
     elif user_choice.upper() == 'HAN':
         user_chose_even = False
-    else:
-        print("Please enter a valid bet!")
-        play(user_betting)
+        print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
 
-    print("The dealer lifts the cup to reveal:\n", "   ", first_dice, " - ", second_dice)
-
-    if user_chose_even == is_even:
-        bet_amount = int(bet_amount)*2
-        print("You Won", bet_amount, "mon!")
+        if user_chose_even == is_even:
+            return_amount = int(bet_amount) * 2
+            print("You Won", return_amount, "mon!")
+        else:
+            print("You Lost!")
 
     else:
-        # int(new_balance) -= int(bet_amount) ask the player to play again or not
-        print("You Lost!")
+        print('Please enter a valid bet!')
+        play(bet_amount)
 
 
 user_betting = bet()
