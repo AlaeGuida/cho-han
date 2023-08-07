@@ -51,7 +51,7 @@ def play(bet_amount):
     elif (first_dice + second_dice) % 2 == 1:   # if sum of the two generated numbers is even, we change it to False
         is_even = False
 
-    # player has to decide either sum of the previous two generated numbers is gonna be odd or even
+    # player has to decide either sum of the previous two generated numbers is gonna be odd or even.
 
     player_choice = input("   CHO (even)  or  HAN(odd)  ?\n> ")
 
